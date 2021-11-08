@@ -23,7 +23,7 @@ class FuzzyArt:
             return None
 
         # create the complemnet 
-        pattern = np.concatenate((pattern, 1 - pattern))
+        pattern = np.concatenate((pattern, 1 - pattern), axis = 1)
 
        # select the winner category and learn the pattern with it
         J = self.choose_category(pattern)
@@ -41,15 +41,15 @@ class FuzzyArt:
         for j in range(0, N):
             category = self.categories[j]
             fuzzy_and = np.minimum(pattern, category)
-            numer = np.linalg.norm(fuzzy_and, 1)
-            denom = self.choice + np.linalg.norm(category, 1)
+            numer = fuzzy_and.sum()
+            denom = self.choice + category.sum()
 
             memberships[j] = numer
             choices[j] = numer / denom
 
         # iterate through categories by descending choice
         # until we find one that meets vigilance criteria
-        pattern_norm = np.linalg.norm(pattern, 1)
+        pattern_norm = pattern.sum()
         order = np.argsort(choices)
         for i in range(0, len(order)):
             j = order[i]
@@ -75,22 +75,24 @@ class FuzzyArt:
         self.category_counts[J] += 1
 
 def complement_code(x: np.array):
-    return np.concatenate((x, 1 - x))
+    return np.concatenate((x, 1 - x), axis = 1)
 
 if __name__ == "__main__":
     # instantiate the ART module
     art = FuzzyArt(
-        pattern_size=2,
+        pattern_size=5,
         vigilance=0.9,
         choice=0.9,
-        learn_rate=0.9
+        learn_rate=0.1
     )
 
     # present some random patterns
-    for i in range(0, 20):
-        pattern = np.array(np.random.rand(art.pattern_size, 1))
-        #pattern_coded = complement_code(pattern)
+    for i in range(0, 200):
+        pattern = np.array(np.random.rand(1, art.pattern_size))  # input patter with size (1,pattern_size)
+        #pattern = p1
+        pattern_coded = complement_code(pattern)
         label = art.train(pattern)
         if label is not None:
-            print(f"{label:2}: {pattern.T} : {art.categories.T[label]}")
+            print(f"{label:2}: {pattern_coded} : {art.categories[label]}")
             #print(f"{label:2}:  {pattern.T} ")
+    print(f"Num of Cat:{len(art.categories)}")
