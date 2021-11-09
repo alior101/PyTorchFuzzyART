@@ -1,6 +1,6 @@
 # PyTorchFuzzyART
 
-![image](https://user-images.githubusercontent.com/3033580/140884043-cdb2f819-2b25-4870-8162-70883dd79f91.png = 250x250)
+<img src="fuzzy_set.png" width="300" height="300">
 
 Torch implementation of G.Carpenter and S.Grossberg Fuzzy ART algorithm 
 Based on 
