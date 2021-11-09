@@ -1,5 +1,4 @@
 # PyTorchFuzzyART
-
 <img src="fuzzy_set.png" width="300" height="300">
 
 Torch implementation of G.Carpenter and S.Grossberg Fuzzy ART algorithm 
