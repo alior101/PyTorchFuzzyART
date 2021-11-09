@@ -7,7 +7,7 @@ https://doi.org/10.1016/0893-6080(91)90056-B
 
 
 Here is an example of running it with 20 samples of 2D points with vigilance of 0.9 
-
+```
 Label : Pattern : Category
      0: [[0.69543761 0.59589849]] : [0.69543761 0.59589849]
      1: [[0.43225307 0.00084859]] : [0.43225307 0.00084859]
@@ -30,4 +30,4 @@ Label : Pattern : Category
      2: [[0.05194829 0.54159323]] : [0.18115124 0.58189972]
      2: [[0.08174443 0.60438669]] : [0.17121056 0.58189972]
 Num of Cat:13
-
+```
