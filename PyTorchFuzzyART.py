@@ -86,13 +86,12 @@ if __name__ == "__main__":
         learn_rate=0.1
     )
 
-    # present some random patterns
+     # present some random patterns
+    print(f"{'Label':6}: {'Pattern'} : {'Category'}")
     for i in range(0, 20):
         pattern = torch.tensor(np.array(np.random.rand(1, art.pattern_size)))  # input patter with size (1,pattern_size)
         #pattern = p1
-        pattern_coded = complement_code(pattern)
         label = art.train(pattern)
         if label is not None:
-            print(f"{label:2}: {pattern_coded} : {art.categories[label]}")
-            #print(f"{label:2}:  {pattern.T} ")
+            print(f"{label:6}: {pattern.numpy()} : {art.categories[label][0][0:art.pattern_size].numpy()}")
     print(f"Num of Cat:{len(art.categories)}")
