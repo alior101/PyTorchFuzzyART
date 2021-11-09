@@ -1,4 +1,7 @@
 # PyTorchFuzzyART
+
+![image](https://user-images.githubusercontent.com/3033580/140884043-cdb2f819-2b25-4870-8162-70883dd79f91.png)
+
 Torch implementation of G.Carpenter and S.Grossberg Fuzzy ART algorithm 
 Based on 
 https://github.com/jacksavage/DocClusterART (corrected few differences from original paper)
